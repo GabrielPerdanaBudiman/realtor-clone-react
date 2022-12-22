@@ -6,10 +6,10 @@ import { getAuth } from "firebase/auth";
 import { v4 as uuidv4 } from "uuid"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 import { db } from "../firebase.js"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function CreateListing() {
-    const navigate = useNavigate
+    const navigate = useNavigate()
     const auth = getAuth()
     const [geoLocationEnabled, setGeoLocationEnabled] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -116,7 +116,8 @@ export default function CreateListing() {
             ...formData,
             imgUrls,
             geoLocation,
-            timestamp: serverTimestamp()
+            timestamp: serverTimestamp(),
+            userRef: auth.currentUser.uid
         }
         delete formDataCopy.images
         !formDataCopy.offer && delete formDataCopy.discountedPrice
@@ -141,7 +142,7 @@ export default function CreateListing() {
                         }`}>
                         Sell
                     </button>
-                    <button type='button' id='type' value='sale' onClick={onChange} className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${type === "sale" ? "bg-white text-black" : "bg-slate-600 text-white"
+                    <button type='button' id='type' value='rent' onClick={onChange} className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${type === "sale" ? "bg-white text-black" : "bg-slate-600 text-white"
                         }`}>
                         rent
                     </button>

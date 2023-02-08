@@ -21,6 +21,7 @@ import SwiperCore, {
 import "swiper/css/bundle";
 import { getAuth } from "firebase/auth";
 import Contact from "../components/Contact";
+import { MapContainer, TileLayer, Marker, Popup } from "leaflet";
 
 export default function Listing() {
   const auth = getAuth();
@@ -150,7 +151,24 @@ export default function Listing() {
             <Contact userRef={listing.userRef} listing={listing} />
           )}
         </div>
-        <div className="bg-blue-300 w-full h-[200px] lg-[400px] z-10 overflow-x-hidden"></div>
+        <div className="bg-blue-300 w-full h-[200px] lg-[400px] z-10 overflow-x-hidden">
+          {/* <MapContainer
+            center={[listing.geolocation.lat, listing.geolocation.lng]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: "100%", width: "100%" }}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker
+              position={[listing.geolocation.lat, listing.geolocation.lng]}
+            >
+              <Popup>{listing.address}</Popup>
+            </Marker>
+          </MapContainer> */}
+        </div>
       </div>
     </main>
   );

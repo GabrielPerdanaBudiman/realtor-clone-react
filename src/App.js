@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ForgotPassword from "./pages/ForgotPassword";
 import Offers from "./pages/Offers";
+import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
 import EditListing from "./pages/EditListing";
 import Profile from "./pages/Profile";
@@ -25,6 +26,7 @@ function App() {
           </Route>
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/offers" element={<Offers />} />
+          <Route path="/category/:categoryName" element={<Category />} />
           <Route
             path="/category/:categoryNAME/:listingID"
             element={<Listing />}
